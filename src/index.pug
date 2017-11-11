@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Unbeatable Tic Tac Toe
+    link(rel='stylesheet', href='./style.css')
+  body
+    .container
+      .content
+        h1 Up for a game of tic-tac-toe?
+        h1 Choose your weapon
+        
+        span#cross.hover-selection X
+        span#circle.hover-selection O
+    .container.hidden
+      .content
+        .board
+          .box
+            #top-left.content
+          .box
+            #top.content
+          .box
+            #top-right.content
+          .box
+            #mid-left.content
+          .box
+            #mid.content
+          .box
+            #mid-right.content
+          .box
+            #bot-left.content
+          .box
+            #bot.content
+          .box
+            #bot-right.content
+    script(src='./app.js')

@@ -1,0 +1,67 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%; }
+
+.hidden {
+  display: none !important; }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; }
+  .container .content {
+    text-align: center;
+    font-size: 3vmin;
+    transform: translateY(-50%); }
+    .container .content .hover-selection {
+      display: inline-block;
+      font-size: 5vmax;
+      background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNiIgaWQ9InN2ZzIiIHZlcnNpb249IjEuMSIgd2lkdGg9IjE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcyBpZD0iZGVmczQiLz48ZyBpZD0ibGF5ZXIxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xMDM2LjM2MjIpIj48cGF0aCBkPSJtIDIsMTA1MC4zNjIyIDEyLC0xMiIgaWQ9InBhdGgyOTg1IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtZGFzaGFycmF5Om5vbmUiLz48cGF0aCBkPSJtIDIsMTAzOC4zNjIyIDEyLDEyIiBpZD0icGF0aDI5ODUtMSIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIi8+PC9nPjwvc3ZnPg==");
+      background-size: cover; }
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 500px;
+  height: 500px; }
+  .board .box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border: 1px solid black; }
+    .board .box .content {
+      position: absolute;
+      background-size: cover;
+      height: 100%;
+      box-sizing: border-box;
+      width: 100%; }
+
+.box:nth-child(-n + 3) {
+  border-top-color: white; }
+
+.box:nth-child(3n + 1) {
+  border-left-color: white; }
+
+.box:nth-child(3n) {
+  border-right-color: white; }
+
+.box:nth-child(n + 7) {
+  border-bottom-color: white; }
+
+.row:nth-child(n + 1) {
+  border-bottom: 1px solid black; }
+
+@media screen and (max-width: 599px) {
+  .board {
+    width: 300px;
+    height: 300px; } }
+
+@media screen and (max-height: 599px) and (orientation: landscape) {
+  .board {
+    width: 300px;
+    height: 300px; } }
