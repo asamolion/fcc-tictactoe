@@ -12,6 +12,7 @@ body {
     display: none !important;
 }
 
+
 .container {
     display: flex;
     justify-content: center;
@@ -19,9 +20,14 @@ body {
     width: 100%;
     height: 100%;
     .content {
+        &.first-slide {
+            transform: translateY(-25%);
+        }
+        &.second-slide {
+            transform: translateY(-5%);
+        }
         text-align: center;
         font-size: 3vmin;
-        transform: translateY(-100px);
         .hover-container {
             border: 5px solid white;
             box-sizing: content-box;
@@ -56,8 +62,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 500px;
-    height: 500px;
+    width: 800px;
     .box {
         position: relative;
         width: 100%;
