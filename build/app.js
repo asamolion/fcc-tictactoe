@@ -7,7 +7,7 @@ var CIRCLE = 0;
 var slides = document.querySelectorAll(".slide");
 
 var slideNo = 0;
-var playerChoice = CROSS;
+var playerChoice = 0;
 
 slides.forEach(function (element) {
     element.classList.toggle("hidden");
@@ -32,3 +32,26 @@ function prevSlide() {
     slideNo--;
     switchSlide();
 }
+
+window.onload = function () {
+    document.getElementById("cross").addEventListener("click", function () {
+        playerChoice = CROSS;
+        nextSlide();
+    });
+    document.getElementById("circle").addEventListener("click", function () {
+        playerChoice = CIRCLE;
+        nextSlide();
+    });
+    document.querySelectorAll(".box .content").forEach(function (element) {
+        element.addEventListener("click", function () {
+            if (!element.classList.contains("background")) {
+                if (playerChoice === CROSS) {
+                    element.classList.add("background", "cross");
+                } else {
+                    element.classList.add("background", "circle");
+                }
+                playerChoice = playerChoice === CROSS ? CIRCLE : CROSS;
+            }
+        });
+    });
+};
