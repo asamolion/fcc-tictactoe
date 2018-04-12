@@ -123,6 +123,13 @@ function minimax(newBoard, choice) {
     return moves[bestMove];
 }
 
+function makeMove(boxes) {
+    var bestMove = minimax(board, aiChoice);
+    boxes[bestMove.index].classList.add("background", aiChoice === CROSS ? "cross" : "circle");
+    board[bestMove.index] = aiChoice;
+    turn++;
+}
+
 window.onload = function () {
     document.getElementById("cross").addEventListener("click", function () {
         playerChoice = CROSS;
@@ -138,14 +145,12 @@ window.onload = function () {
     boxes.forEach(function (element, index) {
         element.addEventListener("click", function () {
             if (!element.classList.contains("background")) {
-                var playerTurn = turn % 2 === 0;
-                if (playerTurn) {
-                    element.classList.add("background", playerChoice === CROSS ? "cross" : "circle");
-                    board[index] = playerChoice;
-                } else {
-                    element.classList.add("background", aiChoice === CROSS ? "cross" : "circle");
-                    board[index] = aiChoice;
-                }
+                element.classList.add("background", playerChoice === CROSS ? "cross" : "circle");
+                board[index] = playerChoice;
+
+                // The AI makes its move
+                makeMove(boxes);
+
                 var winningNumbers = winning(board, aiChoice);
                 if (winningNumbers) {
                     boxes.forEach(function (element, index) {
@@ -153,8 +158,6 @@ window.onload = function () {
                             element.classList.add("red");
                         }
                     });
-                    winner = playerTurn ? "PLAYER" : "AI";
-                    console.log(winner);
                 }
 
                 turn += 1;
