@@ -13,7 +13,9 @@ html
           span#cross.hover-selection
         .hover-container
           span#circle.hover-selection
-      .content.slide
+      .content.slide.board-container
+        #message.hidden
+          button#reset Play Again
         .board
           .box
             #top-left.content
@@ -33,7 +35,4 @@ html
             #bot.content
           .box
             #bot-right.content
-      .content.slide
-          h1 AI is the winner
-          h1 Care to try again?
     script(src='./app.js')

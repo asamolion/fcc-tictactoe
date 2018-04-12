@@ -136,12 +136,33 @@ function minimax(newBoard, choice) {
 
 function makeMove(boxes) {
     let bestMove = minimax(board, aiChoice);
-    boxes[bestMove.index].classList.add(
-        "background",
-        aiChoice === CROSS ? "cross" : "circle"
-    );
-    board[bestMove.index] = aiChoice;
+    if (bestMove.hasOwnProperty("index")) {
+        boxes[bestMove.index].classList.add(
+            "background",
+            aiChoice === CROSS ? "cross" : "circle"
+        );
+        board[bestMove.index] = aiChoice;
+    }
     turn++;
+}
+
+function displayMessage(text) {
+    const messageElem = document.getElementById("message");
+    message.classList = "";
+    document.querySelector(".board").classList.add("changed");
+}
+
+function resetGame() {
+    slideNo = 0;
+    switchSlide();
+    playerChoice = CIRCLE;
+    aiChoice = CROSS;
+    turn = 0;
+    board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    document.querySelectorAll(".box .content").forEach((element, index) => {
+        element.classList = "content";
+    });
+    document.getElementById("message").classList.add("hidden");
 }
 
 window.onload = function() {
@@ -155,6 +176,8 @@ window.onload = function() {
         aiChoice = CROSS;
         nextSlide();
     });
+    document.getElementById("reset").addEventListener("click", resetGame);
+
     var boxes = document.querySelectorAll(".box .content");
     boxes.forEach((element, index) => {
         element.addEventListener("click", () => {
@@ -169,15 +192,21 @@ window.onload = function() {
                 makeMove(boxes);
 
                 var winningNumbers = winning(board, aiChoice);
+
+                turn += 1;
                 if (winningNumbers) {
                     boxes.forEach(function(element, index) {
                         if (winningNumbers.indexOf(index) != -1) {
                             element.classList.add("red");
                         }
                     });
+                    displayMessage("Sorry, You Lost!");
+                } else if (turn > 7) {
+                    boxes.forEach(function(element, index) {
+                        element.classList.add("yellow");
+                    });
+                    displayMessage("It's a draw!");
                 }
-
-                turn += 1;
             }
         });
     });

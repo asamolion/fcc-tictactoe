@@ -19,12 +19,6 @@ body {
     width: 100%;
     height: 100%;
     .content {
-        &.first-slide {
-            transform: translateY(-25%);
-        }
-        &.second-slide {
-            transform: translateY(-5%);
-        }
         text-align: center;
         font-size: 3vmin;
         .hover-container {
@@ -67,13 +61,37 @@ body {
     &.red {
         background-color: red;
     }
+    &.yellow {
+        background-color: yellow;
+    }
 }
 
+#reset {
+    background: none;
+    box-shadow: none;
+    border: 1px solid grey;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+.board-container {
+    padding: 20px;
+}
 .board {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     width: 800px;
+
+    position: relative;
+    top: 0;
+    transition: top 0.5s;
+
+    &.changed {
+        top: 30px;
+    }
+
     .box {
         position: relative;
         width: 100%;
@@ -105,33 +123,6 @@ body {
     border-bottom-color: white;
 }
 
-#top-left {
-}
-
-#top {
-}
-
-#top-right {
-}
-
-#mid-left {
-}
-
-#mid {
-}
-
-#mid-right {
-}
-
-#bot-left {
-}
-
-#bot {
-}
-
-#bot-right {
-}
-
 .row:nth-child(n + 1) {
     border-bottom: 1px solid black;
 }
@@ -140,6 +131,9 @@ body {
     .board {
         width: 300px;
         height: 300px;
+    }
+    #reset {
+        font-size: 50px;
     }
 }
 
