@@ -64,6 +64,9 @@ body {
     &.cross {
         background-image: url($crossUrl);
     }
+    &.red {
+        background-color: red;
+    }
 }
 
 .board {
